@@ -1,4 +1,4 @@
-
+@import "tailwindcss";
 #copy:hover{
       background-color: darkcyan;
       cursor: pointer;
