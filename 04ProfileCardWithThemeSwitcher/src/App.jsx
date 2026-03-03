@@ -6,28 +6,39 @@ import TBtn from './Components/TBtn'
 import Card from './Components/Card'
 
 function App() {
-  const select = document.querySelector('html').classList
   const[themeMode, setThemeMode] = useState("light")
 
-  const lightTheme = () =>{
+  const lightTheme = () => {
+    console.log('lightTheme called')
     setThemeMode("light")
   }
 
-  const darkTheme = () =>{
+  const darkTheme = () => {
+    console.log('darkTheme called')
     setThemeMode("dark")
   }
 
   useEffect(() => {
-  if (themeMode === "dark") {
-    select.add("dark")
-  } else {
-    select.remove("dark")
+    console.log('Theme changed to:', themeMode)
+    const htmlElement = document.documentElement
+    if (themeMode === "dark") {
+      htmlElement.classList.add("dark")
+      console.log('Added dark class to html')
+    } else {
+      htmlElement.classList.remove("dark")
+      console.log('Removed dark class from html')
+    }
+  }, [themeMode])
+
+  const themeValue = {
+    themeMode,
+    lightTheme,
+    darkTheme
   }
-}, [themeMode])
 
   return (
-  <ThemeProvider value={{themeMode, lightTheme, darkTheme}}>
-  <div className="flex flex-wrap min-h-screen items-center">
+  <ThemeProvider value={themeValue}>
+  <div className="flex flex-wrap min-h-screen items-center bg-gray-50 dark:bg-gray-900">
               <div className="w-full">
                   <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
                         <TBtn />
