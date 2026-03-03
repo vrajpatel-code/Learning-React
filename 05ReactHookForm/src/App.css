@@ -1,0 +1,204 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px;
+}
+
+.shell {
+  width: min(720px, 100%);
+}
+
+.header {
+  margin-bottom: 14px;
+  text-align: left;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(26px, 3.2vw, 34px);
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--muted);
+}
+
+.formCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 16px;
+  }
+
+  .field:nth-child(1) {
+    grid-column: 1 / -1;
+  }
+}
+
+.field {
+  text-align: left;
+}
+
+.label {
+  display: inline-block;
+  font-weight: 650;
+  font-size: 13px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.control {
+  width: 100%;
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 11px 12px;
+  outline: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+}
+
+.control:focus {
+  border-color: color-mix(in oklab, var(--primary), white 10%);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary), transparent 78%);
+}
+
+.control::placeholder {
+  color: color-mix(in oklab, var(--muted), transparent 15%);
+}
+
+.control.isInvalid {
+  border-color: color-mix(in oklab, var(--danger), white 8%);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--danger), transparent 82%);
+}
+
+.help {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.errorText {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--danger);
+}
+
+.actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.btn {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+  padding: 10px 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, background 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary), transparent 78%);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btnPrimary {
+  border-color: color-mix(in oklab, var(--primary), black 5%);
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--primary), white 10%),
+    var(--primary)
+  );
+  color: white;
+  box-shadow: 0 10px 22px -14px color-mix(in oklab, var(--primary), transparent 60%);
+}
+
+.btnPrimary:hover {
+  border-color: color-mix(in oklab, var(--primary), white 10%);
+}
+
+.btnGhost:hover {
+  border-color: color-mix(in oklab, var(--border), var(--text) 10%);
+  background: color-mix(in oklab, var(--surface2), var(--text) 3%);
+}
+
+.alert {
+  margin-top: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+.alertSuccess {
+  border-color: color-mix(in oklab, var(--success), white 15%);
+  background: color-mix(in oklab, var(--success), transparent 90%);
+  color: color-mix(in oklab, var(--success), var(--text) 25%);
+}
+
+.alertError {
+  border-color: color-mix(in oklab, var(--danger), white 15%);
+  background: color-mix(in oklab, var(--danger), transparent 92%);
+  color: color-mix(in oklab, var(--danger), var(--text) 20%);
+}
+
+.preview {
+  margin-top: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--surface2), transparent 10%);
+  padding: 12px;
+}
+
+.previewTitle {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.previewCode {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+  overflow: auto;
+  max-height: 220px;
+}
