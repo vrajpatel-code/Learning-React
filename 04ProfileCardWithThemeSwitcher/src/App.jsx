@@ -9,24 +9,19 @@ function App() {
   const[themeMode, setThemeMode] = useState("light")
 
   const lightTheme = () => {
-    console.log('lightTheme called')
     setThemeMode("light")
   }
 
   const darkTheme = () => {
-    console.log('darkTheme called')
     setThemeMode("dark")
   }
 
   useEffect(() => {
-    console.log('Theme changed to:', themeMode)
     const htmlElement = document.documentElement
     if (themeMode === "dark") {
       htmlElement.classList.add("dark")
-      console.log('Added dark class to html')
     } else {
       htmlElement.classList.remove("dark")
-      console.log('Removed dark class from html')
     }
   }, [themeMode])
 
@@ -38,17 +33,18 @@ function App() {
 
   return (
   <ThemeProvider value={themeValue}>
-  <div className="flex flex-wrap min-h-screen items-center bg-gray-50 dark:bg-gray-900">
-              <div className="w-full">
-                  <div className="w-full max-w-sm mx-auto flex justify-end mb-4">
-                        <TBtn />
+  <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white px-4 py-10 text-slate-900 dark:from-slate-950 dark:to-slate-900 dark:text-slate-50">
+    <div className="mx-auto w-full max-w-sm">
+      <div className="mb-6 flex items-center justify-between">
+        <div>
+          <p className="text-sm font-medium text-slate-600 dark:text-slate-300">Profile card</p>
+          <p className="text-xs text-slate-500 dark:text-slate-400">Use the switch to change theme</p>
+        </div>
+        <TBtn />
+      </div>
 
-                  </div>
-
-                  <div className="w-full max-w-sm mx-auto">             
-                        <Card />
-                  </div>
-              </div>
+      <Card />
+    </div>
   </div>
   </ThemeProvider>
   )
